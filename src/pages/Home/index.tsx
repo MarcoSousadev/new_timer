@@ -1,36 +1,59 @@
-import { Play } from "phosphor-react";
-import { CountDownContainer, FormContainer, HomeContainer, Separtor } from "./styles";
+import { Play } from 'phosphor-react'
+import {
+  CountDownContainer,
+  FormContainer,
+  HomeContainer,
+  MinutesAmountInput,
+  Separtor,
+  StartCountDownButton,
+  TaskInput
+} from './styles'
 
-export function Home(){
+export function Home() {
   return (
-  <HomeContainer>
-    <form action="">
-      <FormContainer>
-        <label htmlFor="task">Vou trabalhar em</label>
-        <input id="task" />
+    <HomeContainer>
+      <form action="">
+        <FormContainer>
+          <label htmlFor="task">Vou trabalhar em</label>
+          <TaskInput
+            placeholder="Dê um nome para seu projeto"
+            id="task"
+            list="task-suggestions"
+          />
 
-        <label htmlFor="minutesAmount">durante</label>
-        <input type="number"  id="minutesAmount" />
+          <datalist id="task-suggestions">
+            <option value="projeto 1" />
+            <option value="projeto 2" />
+            <option value="projeto 3" />
+            <option value="Banana 4" />
+          </datalist>
 
-        <span>minutos.</span>  
+          <label htmlFor="minutesAmount">durante</label>
+          <MinutesAmountInput
+            placeholder="00"
+            type="number"
+            id="minutesAmount"
+            step={5}
+            min={5}
+            max={60}
+          />
+
+          <span>minutos.</span>
         </FormContainer>
-      
 
-      <CountDownContainer>
-        <span>0</span>
-        <span>0</span>
-        <Separtor>:</Separtor>
-        <span>0</span>
-        <span>0</span>
-      </CountDownContainer>
+        <CountDownContainer>
+          <span>0</span>
+          <span>0</span>
+          <Separtor>:</Separtor>
+          <span>0</span>
+          <span>0</span>
+        </CountDownContainer>
 
-      <button type="submit">
-        <Play size={24}/>
-        Começar
-      </button>
-
+        <StartCountDownButton disabled type="submit">
+          <Play size={24} />
+          Começar
+        </StartCountDownButton>
       </form>
-
-  </HomeContainer>
+    </HomeContainer>
   )
 }
